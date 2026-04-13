@@ -29,13 +29,15 @@ def main() -> None:
         
         recommendations = recommend_songs(prefs, songs, k=5)
 
-        print("\n[ Top Recommendations ]\n" + "="*50)
+        print("\n" + "="*125)
+        print(f"| {'Rk':<2} | {'Title':<26} | {'Artist':<20} | {'Scor':<4} | {'Why/Derivation'}")
+        print("-" * 125)
         for i, rec in enumerate(recommendations, 1):
             song, score, explanation = rec
-            print(f"#{i} | {song['title']} by {song['artist']}")
-            print(f"   Score: {score:.2f} Pts")
-            print(f"   Why: {explanation}")
-            print("-" * 50)
+            title = song['title'][:25]
+            artist = song['artist'][:19]
+            print(f"| #{i:<1} | {title:<26} | {artist:<20} | {score:<4.2f} | {explanation}")
+        print("=" * 125)
 
 
 if __name__ == "__main__":

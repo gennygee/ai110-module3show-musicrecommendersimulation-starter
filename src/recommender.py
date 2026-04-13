@@ -90,12 +90,30 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
 def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str]]:
     """Iterates through the dataset evaluating each track to securely return the top k sorted recommendations."""
     scored_songs = []
-    
     for song in songs:
         score, reasons = score_song(user_prefs, song)
-        # Join the list of reason strings into a single readable sentence
         explanation = ", ".join(reasons) if reasons else "No specific matches"
         scored_songs.append((song, score, explanation))
         
-    # Rank the list by sorting descending based on the score (index 1 of the tuple)
-    return sorted(scored_songs, key=lambda x: x[1], reverse=True)[:k]
+    scored_songs.sort(key=lambda x: x[1], reverse=True)
+    
+    final_results = []
+    seen_artists = set()
+    
+    # Challenge 3: Greedy Diversity Selection
+    while len(final_results) < k and scored_songs:
+        best = scored_songs.pop(0)
+        song, score, explanation = best
+        
+        if song['artist'] in seen_artists:
+            # Apply dynamic penalty
+            score -= 1.0
+            explanation += " | Artist Penalty (-1.0)"
+            # Re-insert and re-evaluate
+            scored_songs.append((song, score, explanation))
+            scored_songs.sort(key=lambda x: x[1], reverse=True)
+        else:
+            seen_artists.add(song['artist'])
+            final_results.append((song, score, explanation))
+            
+    return final_results
