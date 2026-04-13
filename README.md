@@ -26,6 +26,15 @@ Real-world recommendation systems at platforms like Spotify or YouTube use massi
 *   **Recommender Engine**: Computes a score for every song by taking the absolute mathematical difference between the `UserProfile`'s numerical preferences and the `Song`'s attributes (rewarding traits that are closest to the target, rather than just raw highs or lows), while applying heavy multiplier weights for categorical matches like genre.
 *   **Recommendation Rule**: Once every individual song receives a score from the engine, the items are ranked descending, presenting only the very top matches as the final suggested playlist.
 
+### The Algorithm Recipe
+
+The simulation uses the following weighting system to process each song against the active user profile:
+1. **Genre Match**: `+2.0` points (Acts as a heavy foundational filter).
+2. **Mood Match**: `+1.0` points (Acts as a soft affinity boost).
+3. **Proximity Scoring**: Numerical features (like Energy and Acousticness) are scored based on mathematical distance: `Points = 1.0 - absolute(Target - SongValue)`.
+
+**Potential Biases**: Because we assign a massive `+2.0` weight to `genre`, this system is inherently conservative and restrictive. It will likely over-prioritize genre matching, completely ignoring an incredible piece of music that flawlessly matches the user's mood and energy preferences simply because it is tagged as "jazz" instead of "lofi."
+
 ---
 
 ## Getting Started
