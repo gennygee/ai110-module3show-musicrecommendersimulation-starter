@@ -66,22 +66,22 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     score = 0.0
     reasons = []
 
-    # 1. Categorical: Genre Math (+2.0 Bonus)
+    # 1. Categorical: Genre Math (+1.0 Bonus) - EXPERIMENT: Halved Weight
     if 'genre' in user_prefs and song.get('genre') == user_prefs['genre']:
-        score += 2.0
-        reasons.append("Genre match (+2.0)")
+        score += 1.0
+        reasons.append("Genre match (+1.0)")
 
     # 2. Categorical: Mood Match (+1.0 Bonus)
     if 'mood' in user_prefs and song.get('mood') == user_prefs['mood']:
         score += 1.0
         reasons.append("Mood match (+1.0)")
 
-    # 3. Numerical: Proximity Scoring
+    # 3. Numerical: Proximity Scoring - EXPERIMENT: Doubled Weight
     numerical_features = ['energy', 'valence', 'danceability', 'acousticness']
     for feature in numerical_features:
         if feature in user_prefs and feature in song:
             distance = abs(user_prefs[feature] - song[feature])
-            points = 1.0 - distance
+            points = (1.0 - distance) * 2.0
             score += points
             reasons.append(f"{feature.capitalize()} match (+{points:.2f})")
 

@@ -60,32 +60,63 @@ pip install -r requirements.txt
 python -m src.main
 ```
 
-### Verification ("Screenshot" of Terminal Output)
+### Verification ("Screenshot" of Target Profiles Terminal Output)
 
 ```text
-Loaded songs: 18
+>>> EVALUATING PROFILE: High-Energy Pop <<<
+Targets: {'genre': 'pop', 'mood': 'happy', 'energy': 0.9}
 
 [ Top Recommendations ]
 ==================================================
 #1 | Sunrise City by Neon Echo
-   Score: 3.98 Pts
-   Why: Genre match (+2.0), Mood match (+1.0), Energy match (+0.98)
+   Score: 3.92 Pts
+   Why: Genre match (+2.0), Mood match (+1.0), Energy match (+0.92)
 --------------------------------------------------
 #2 | Gym Hero by Max Pulse
-   Score: 2.87 Pts
-   Why: Genre match (+2.0), Energy match (+0.87)
+   Score: 2.97 Pts
+   Why: Genre match (+2.0), Energy match (+0.97)
 --------------------------------------------------
-#3 | Rooftop Lights by Indigo Parade
-   Score: 1.96 Pts
-   Why: Mood match (+1.0), Energy match (+0.96)
+
+>>> EVALUATING PROFILE: Chill Lofi <<<
+Targets: {'genre': 'lofi', 'mood': 'chill', 'energy': 0.35}
+
+[ Top Recommendations ]
+==================================================
+#1 | Library Rain by Paper Lanterns
+   Score: 4.00 Pts
+   Why: Genre match (+2.0), Mood match (+1.0), Energy match (+1.00)
 --------------------------------------------------
-#4 | Street Anthem by MC Verse
-   Score: 0.95 Pts
-   Why: Energy match (+0.95)
+#2 | Midnight Coding by LoRoom
+   Score: 3.93 Pts
+   Why: Genre match (+2.0), Mood match (+1.0), Energy match (+0.93)
 --------------------------------------------------
-#5 | Night Drive Loop by Neon Echo
-   Score: 0.95 Pts
-   Why: Energy match (+0.95)
+
+>>> EVALUATING PROFILE: Deep Intense Rock <<<
+Targets: {'genre': 'rock', 'mood': 'intense', 'energy': 0.95}
+
+[ Top Recommendations ]
+==================================================
+#1 | Storm Runner by Voltline
+   Score: 3.96 Pts
+   Why: Genre match (+2.0), Mood match (+1.0), Energy match (+0.96)
+--------------------------------------------------
+#2 | Gym Hero by Max Pulse
+   Score: 1.98 Pts
+   Why: Mood match (+1.0), Energy match (+0.98)
+--------------------------------------------------
+
+>>> EVALUATING PROFILE: Adversarial / Conflicted <<<
+Targets: {'genre': 'classical', 'mood': 'sad', 'energy': 0.99, 'danceability': 0.9}
+
+[ Top Recommendations ]
+==================================================
+#1 | Moonlight Sonata by Classicist
+   Score: 3.43 Pts
+   Why: Genre match (+2.0), Mood match (+1.0), Energy match (+0.13), Danceability match (+0.30)
+--------------------------------------------------
+#2 | Gym Hero by Max Pulse
+   Score: 1.92 Pts
+   Why: Energy match (+0.94), Danceability match (+0.98)
 --------------------------------------------------
 ```
 

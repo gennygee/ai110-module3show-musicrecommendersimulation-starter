@@ -61,29 +61,17 @@ Prompts:
 
 ## 6. Limitations and Bias 
 
-Where the system struggles or behaves unfairly. 
-
-Prompts:  
-
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+This recommendation engine exhibits a very rigid "filter bubble" bias directly resulting from how it penalizes "energy gaps." Because our `songs.csv` dataset is currently split between completely extreme high-energy gym anthems and heavily sedated lofi tracks, any user requesting a balanced, moderate-energy profile will automatically be penalized and mathematically alienated by the system. Furthermore, because the algorithm strictly enforces rigid categorical point bonuses for "matching moods," it inherently ignores highly relevant genre-bending tracks that might actually satisfy the user's acoustic desires but happen to be tagged with slightly different text labels.  
 
 ---
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
+I systematically evaluated the engine by running four distinct profile tests: "High-Energy Pop", "Chill Lofi", "Deep Intense Rock", and a logically conflicted "Adversarial" profile (which requested Classical music but with extreme dance club energy levels). 
 
-Prompts:  
+What strongly surprised me was how frequently the aggressive workout track "Gym Hero" surfaced near the very top of the list for users who just wanted light, breezy "Happy Pop." 
 
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
-
-No need for numeric metrics unless you created some.
+Why does this happen? My algorithm relies heavily on measuring the math of the audio. "Gym Hero" has an extraordinarily high metric for energy. Because the Pop listener also requested high energy, "Gym Hero" acquired massive mathematical points, overpowering the fact that its text mood was listed as "Intense" instead of "Happy". The math engine essentially concluded that the sheer speed and momentum of the track was far more relevant than the subjective text label a human typed into the spreadsheet.
 
 ---
 
