@@ -60,6 +60,35 @@ pip install -r requirements.txt
 python -m src.main
 ```
 
+### Verification ("Screenshot" of Terminal Output)
+
+```text
+Loaded songs: 18
+
+[ Top Recommendations ]
+==================================================
+#1 | Sunrise City by Neon Echo
+   Score: 3.98 Pts
+   Why: Genre match (+2.0), Mood match (+1.0), Energy match (+0.98)
+--------------------------------------------------
+#2 | Gym Hero by Max Pulse
+   Score: 2.87 Pts
+   Why: Genre match (+2.0), Energy match (+0.87)
+--------------------------------------------------
+#3 | Rooftop Lights by Indigo Parade
+   Score: 1.96 Pts
+   Why: Mood match (+1.0), Energy match (+0.96)
+--------------------------------------------------
+#4 | Street Anthem by MC Verse
+   Score: 0.95 Pts
+   Why: Energy match (+0.95)
+--------------------------------------------------
+#5 | Night Drive Loop by Neon Echo
+   Score: 0.95 Pts
+   Why: Energy match (+0.95)
+--------------------------------------------------
+```
+
 ### Running Tests
 
 Run the starter tests with:
