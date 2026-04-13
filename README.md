@@ -17,17 +17,14 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
+Real-world recommendation systems at platforms like Spotify or YouTube use massive datasets, relying upon an intricate blend of collaborative filtering (analyzing behavioral trends across millions of users) and content-based filtering (analyzing the specific audio attributes of a single track). In our simulation, we focus entirely on **content-based filtering**, prioritizing a mathematical matching of the structural and emotional features of a song to an individual's specific preferences.
 
-Some prompts to answer:
+### Core System Features
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
-
-You can include a simple diagram or bullet list if helpful.
+*   **Song Object**: Each track utilizes quantitative audio features (`energy`, `valence`, and `danceability`) as well as categorical data (`genre`, `mood`) to establish its musical "vibe."
+*   **UserProfile Object**: Stores a user's target values for these exact features (e.g., target energy level, preferred valence, and favorite genre).
+*   **Recommender Engine**: Computes a score for every song by taking the absolute mathematical difference between the `UserProfile`'s numerical preferences and the `Song`'s attributes (rewarding traits that are closest to the target, rather than just raw highs or lows), while applying heavy multiplier weights for categorical matches like genre.
+*   **Recommendation Rule**: Once every individual song receives a score from the engine, the items are ranked descending, presenting only the very top matches as the final suggested playlist.
 
 ---
 
